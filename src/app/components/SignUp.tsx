@@ -3,6 +3,8 @@
 import { useState } from 'react'
 import Image from 'next/image';
 
+import SignUpForm from './forms/SignUpForm';
+
 export default function SignUp({
   children,
 }: {
@@ -23,43 +25,7 @@ export default function SignUp({
           <div className="flex flex-wrap -m-6">
             <div className="w-full md:w-1/2 p-6">
               <div className="md:max-w-xl">
-                <h2 className="mb-3 font-heading font-bold text-gray-900 text-6xl sm:text-7xl">Regístrate en Autowin, es 100% gratis.</h2>
-                <p className="mb-12 text-lg text-gray-500 mt-12">¿Quieres vender tu auto rápido y fácil? Publica tu auto en Autowin, líder en venta de autos usados. Alcanza a una amplia audiencia de compradores interesados y obtén la mejor oferta. ¡Publica hoy y vende con éxito en Autowin!</p>
-                <div className="flex flex-wrap -m-2 mb-6">
-                  <div className="w-full md:w-1/2 p-2">
-                    <input className="w-full px-5 py-3.5 text-gray-500 placeholder-gray-500 bg-white outline-none focus:ring-4 focus:ring-indigo-500 border border-gray-200 rounded-lg" type="text" placeholder="Apellido" name="lastName" />
-                  </div>
-                  <div className="w-full md:w-1/2 p-2">
-                    <input className="w-full px-5 py-3.5 text-gray-500 placeholder-gray-500 bg-white outline-none focus:ring-4 focus:ring-indigo-500 border border-gray-200 rounded-lg" type="text" placeholder="Nombre" name="firstName" />
-                  </div>
-                  <div className="w-full p-2">
-                    <input className="w-full px-5 py-3.5 text-gray-500 placeholder-gray-500 bg-white outline-none focus:ring-4 focus:ring-indigo-500 border border-gray-200 rounded-lg" type="text" placeholder="Dirección de E-Mail" name="email" />
-                  </div>
-                  <div className="w-full p-2">
-                    <input className="w-full px-5 py-3.5 text-gray-500 placeholder-gray-500 bg-white outline-none focus:ring-4 focus:ring-indigo-500 border border-gray-200 rounded-lg" type="text" placeholder="Comuna" name="commune" />
-                  </div>
-                </div>
-                <div className="flex flex-wrap -m-1.5 mb-8">
-                  <div className="w-auto p-1.5">
-                    <input className="w-4 h-4" type="checkbox" />
-                  </div>
-                  <div className="flex-1 p-1.5">
-                    <p className="text-gray-500 text-sm">
-                      <span>Acepto los</span>
-                      <a className="text-gray-900 hover:text-gray-700" href="#">Términos y condiciones</a>
-                      <span>de Autowin</span>
-                    </p>
-                  </div>
-                </div>
-                <div className="group relative md:max-w-max">
-                  <div className="absolute top-0 left-0 w-full h-full bg-gradient-green opacity-0 group-hover:opacity-50 rounded-lg transition ease-out duration-300"></div>
-                  <button className="p-1 w-full font-heading font-semibold text-xs text-gray-900 group-hover:text-white uppercase tracking-px overflow-hidden rounded-md">
-                    <div className="relative p-5 px-9 bg-gradient-green overflow-hidden rounded-md">
-                      <div className="absolute top-0 left-0 transform -translate-y-full group-hover:-translate-y-0 h-full w-full bg-gray-900 transition ease-in-out duration-500"></div>
-                      <p className="relative z-10">REGISTRARME GRATIS</p>
-                    </div>
-                  </button>
-                </div>
+                <SignUpForm />
               </div>
             </div>
             <div className="w-full md:w-1/2 p-6">

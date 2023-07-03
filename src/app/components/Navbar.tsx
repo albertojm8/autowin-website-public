@@ -4,11 +4,7 @@ import { useState } from 'react'
 import Image from 'next/image';
 import Link from 'next/link';
 
-export default function NavBar({
-  children,
-}: {
-  children: React.ReactNode
-}) {
+export default function NavBar({}: any) {
   const [count, setCount] = useState(0)
  
   return (

@@ -2,11 +2,7 @@
  
 import { useState } from 'react'
  
-export default function Faq({
-  children,
-}: {
-  children: React.ReactNode
-}) {
+export default function Faq({}: any) {
   const [count, setCount] = useState(0)
  
   return (

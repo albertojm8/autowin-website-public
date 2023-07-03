@@ -3,11 +3,7 @@
 import { useState } from 'react'
 import Image from 'next/image'
 
-export default function Footer({
-  children,
-}: {
-  children: React.ReactNode
-}) {
+export default function Footer({}: any) {
   const [count, setCount] = useState(0)
  
   return (

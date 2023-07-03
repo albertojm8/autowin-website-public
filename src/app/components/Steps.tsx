@@ -2,11 +2,7 @@
  
 import { useState } from 'react'
  
-export default function Steps({
-  children,
-}: {
-  children: React.ReactNode
-}) {
+export default function Steps({}: any) {
   const [count, setCount] = useState(0)
  
   return (

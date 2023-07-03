@@ -5,11 +5,7 @@ import Image from 'next/image';
 
 import SignUpForm from './forms/SignUpForm';
 
-export default function SignUp({
-  children,
-}: {
-  children: React.ReactNode
-}) {
+export default function SignUp({}: any) {
   const [count, setCount] = useState(0)
  
   return (

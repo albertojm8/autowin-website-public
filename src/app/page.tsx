@@ -7,12 +7,12 @@ import Footer from './components/Footer';
 export default function Home() {
   return (
     <div>
-      <NavBar children={undefined} />
-      <Steps children={undefined} />
-      <SignUp children={undefined} />
-      <Faq children={undefined} />
-      <Blog children={undefined} />
-      <Footer children={undefined} />
+      <NavBar />
+      <Steps />
+      <SignUp />
+      <Faq />
+      <Blog />
+      <Footer />
     </div>
   );
 }

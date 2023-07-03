@@ -2,11 +2,7 @@
  
 import { useState } from 'react'
 import Image from 'next/image'
-export default function Blog({
-  children,
-}: {
-  children: React.ReactNode
-}) {
+export default function Blog({}: any) {
   const [count, setCount] = useState(0)
  
   return (

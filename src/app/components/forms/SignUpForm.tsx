@@ -1,11 +1,14 @@
 'use client'
  
-import { useState } from 'react'
+import { useRef, useState } from 'react'
 import Image from 'next/image';
 import axios from 'axios';
 
 import { zodResolver } from '@hookform/resolvers/zod';
 import { useForm } from 'react-hook-form';
+
+import Captcha from "react-google-recaptcha";
+
 import { z } from 'zod';
 
 const API_URL = 'http://your-api-url.com'; // Replace with your actual API URL
@@ -21,15 +24,25 @@ const schema = z.object({
 type FormValue = z.infer<typeof schema>;
 
 const isSubmitting = false;
+
 export default function SignUpForm() {
+
+  const captchaRef = useRef<Captcha>(null);
   const { register, handleSubmit, formState: { errors, isSubmitting } } = useForm({
-    resolver: zodResolver(schema),
+    resolver: zodResolver(schema)
   });
 
   const onSubmit = async (data: FormValue) => {
+
+    console.log("Sending message to /api/subscribe", data);
+
     try {
       // Make an API request to submit the form data
-      const response = await axios.post('https://hub.dummyapis.com/delay?seconds=1', data);
+      const captcha = await captchaRef.current?.executeAsync();
+
+      console.log("Captcha response", captcha);
+      
+      const response = await axios.post('/api/subscribe', {data, captcha});
       console.log(response.data);
       // Handle success or display a success message
     } catch (error) {
@@ -39,9 +52,13 @@ export default function SignUpForm() {
   };
 
   return (
-
         <form method="post" onSubmit={handleSubmit(onSubmit)}>
-          <h2 className="mb-3 font-heading font-bold text-gray-900 text-6xl sm:text-7xl">Regístrate en Autowin, es 100% gratis.</h2>
+          <Captcha
+            ref={captchaRef}
+            size="invisible"
+            sitekey={process.env.NEXT_PUBLIC_CAPTCHA!}
+          />
+          <h2 className="mb-3 font-heading font-bold text-gray-900 text-6xl sm:text-7xl">Regístrate y publica en Autowin, es 100% gratis.</h2>
           <p className="mb-12 text-lg text-gray-500 mt-12">¿Quieres vender tu auto rápido y fácil? Publica tu auto en Autowin, líder en venta de autos usados. Alcanza a una amplia audiencia de compradores interesados y obtén la mejor oferta. ¡Publica hoy y vende con éxito en Autowin!</p>
           <div className="flex flex-wrap -m-2 mb-6">
             <div className="w-full md:w-1/2 p-2">
@@ -94,6 +111,7 @@ export default function SignUpForm() {
               <input 
                 id="commune"
                 type='text'
+                placeholder='Providencia'
                 {...register('commune', {
                   required: true,
                 })}
